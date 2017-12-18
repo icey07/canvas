@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #clock{
+            display: block;
+            margin: 50px auto;
+            border: 1px solid red;
+
+        }
+    </style>
+</head>
+<body >
+<canvas id="clock" width="1000px" height="2000px">不支持canvas，用户看到的内容</canvas>
+<script>
+    window.onload=function(){
+        var canvas=document.getElementById("clock");
+        if(canvas.getContext("2d")){
+            var context=canvas.getContext("2d");
+
+            context.beginPath()
+            context.moveTo(100,100);
+            context.lineTo(700,700);
+            context.lineTo(100,700)
+            context.lineTo(100,100);
+            context.closePath();
+
+            /*context.fillStyle="rgb(2,100,30)";
+            context.fill();*/
+
+            context.lineWidth=50;
+            context.strokeStyle="blue"
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(200,100)
+            context.lineTo(700,600);
+            context.closePath();
+
+            context.lineWidth=5;
+            context.stroke();
+
+            for(var i=0;i<10;i++){
+                context.beginPath();
+                context.arc(50+i*100,180,40,0,2*Math.PI*(i+1)/10);
+                context.closePath();
+                context.stroke();
+            }
+            for(var i=0;i<10;i++){
+                context.beginPath();
+                context.arc(50+i*100,300,40,0,2*Math.PI*(i+1)/10)
+                context.stroke();
+            }
+
+            context.beginPath();
+            context.moveTo(200,900);
+            context.lineTo(800,900);
+            context.lineWidth=50;
+            context.strokeStyle="red"
+            context.lineCap="round"
+            context.stroke();
+
+        }else{
+            alert("不支持！")
+        }
+    }
+
+    var tmp=new Date();
+    function f(){
+        console.log("aaaa"+tmp);
+        if(false){
+           var tmp="hello world";
+        }
+    }
+
+     f();
+</script>
+</body>
+</html>
